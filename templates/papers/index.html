@@ -1,0 +1,116 @@
+{% extends "plantilla.html" %}
+
+{% load static %}
+{% load i18n %}
+
+
+{% block content%}
+
+
+
+
+
+
+
+    <div class="container" style="margin-left:140px; padding: 0px 10px;">
+        <div class="jumbotron">
+        <h1>PVSIM Fact Sheets</h1>
+        </div>
+    </div>
+    <main class="container" style="margin-left:140px; padding: 0px 10px;">
+        <div class="row" >
+         <section id="todos_los_productos" class ="row" >
+			
+			<hr/>
+			<div id="contenedor_filtros" class="row" style="margin-left:10px; padding: 0px 10px;">
+				<div id="filtros_productos" class="col-xs-12">
+					<form id="searchr-form" action="" method="post" >{% csrf_token %}
+						<div class="campo_busqueda col-xs-12 " >
+						{{ search }}
+						<input type="button" id="boton_prod" value="View Article"/>
+						</div>
+					</form>
+				</div>
+			</div>
+			
+			</section>
+			<div id="contenedor_filtrado" class="container">
+			</div>
+        </div>
+
+	</main>
+ 
+
+  
+  <!-- ########################################
+  #########3PAGINATOR ##############3
+  ###################################################-->
+<div class="container" style="margin-left:140px;">
+				<div class="row justify-content-center"  style="background-color:#fff; z-index:20;" "margin-left:140px;">
+					<div class =" col-12 pt-3" style="background-color:#fff; "  >
+							<span class="step-links">
+								{% if papers1.has_previous %}
+									<a href="?page={{ papers1.previous_page_number }}">Previus</a>
+								{% endif %}
+
+								<span class="current">
+									Page {{papers1.number }} de {{ papers1.paginator.num_pages }}.
+								</span>
+
+								{% if papers1.has_next %}
+									<a href="?page={{ papers1.next_page_number }}">Next</a>
+								{% endif %}
+							</span>
+                        <hr/>
+					</div>
+				</div>
+</div>
+<div id="papers_index" class="container" style="margin-left:140px;">
+
+
+     {% for papers in papers1  %}
+    <div class="row justify-content-center align-items-center border  my-3 " style=" z-index:20;" "margin-left:10px;">
+        <div class="col-12 py-3" style="background-color:#fff; ">
+            <div class="row   ">
+                <div id="papers_contenido" class="col-12 py-3 ">
+                    <h4>"{{papers.titulo}}".</h4>
+                    {{papers.contenido|safe|slice:":455"}}
+                </div>
+                <div class="col-12  py-3">
+                    <div class="row justify-content-between">
+                        <div class="col-6 col-sm-4 ">
+                             <a href="{% url 'paper' slug=papers.slug   %} " target="_blank">Read Article</a>
+                        </div>
+                        <div class="col-6 col-sm-4">
+                            <a href="{% url 'contacto' %}" target="_blank">Contact</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+ 
+     </div>
+
+     {% endfor %}
+ </div> 
+
+
+{% endblock %}
+
+
+{% block scripts %}
+ <script src="{% static 'js/jquery-ui.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/jquery-ui.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/ajax.js' %}"></script>
+<script src="http://cdn.jsdelivr.net/jquery.cookie/1.4.1/jquery.cookie.min.js"></script>
+
+	<script type="text/javascript">
+		$( "#id_querycom" ).autocomplete({
+		source:"/papers/buscar_paper/"
+		});
+	</script>
+
+
+
+
+{% endblock %}

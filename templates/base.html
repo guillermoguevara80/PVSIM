@@ -1,0 +1,28 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+	<meta http-equiv="Content-Type" content="text/html" charset="utf-8">
+    <title>{% block title %}{% if page_title %}{{ page_title }} - {% endif %}{{ site_name }}{% endblock %}</title>
+    <meta name="keywords" content="{{ palabras_claves }}" />
+    <meta name="description" content="{{ descripcion }}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'myapp/css/bootstrap.css'%}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'myapp/css/style.css' %}"/>
+    <script type="text/javascript" src="{% static 'myapp/js/jquery.js' %}"></script>
+    <script type="text/javascript" src="{% static 'myapp/js/bootstrap.js' %}"></script>
+	<link href="{% static 'myapp/css/jquery-ui.css' %}" rel="stylesheet">
+	<link rel="shortcut icon" href="{%  static 'favicon.ico' %}">
+	
+   
+  </head>
+  <body>
+    {% block contenedor %}{% endblock %}
+	<script src="http://cdn.jsdelivr.net/jquery.cookie/1.4.1/jquery.cookie.min.js"></script>
+	{% block scripts %}{% endblock %}
+  </body>
+</html>

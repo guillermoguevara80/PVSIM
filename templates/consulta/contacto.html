@@ -1,0 +1,33 @@
+{% extends "plantilla.html" %}
+{% load static %}
+{% load i18n %}
+{% block content %}
+<div class="container"style="margin-left:140px; padding: 0px 10px;">
+	<div class="jumbotron">
+		<h1>PVSIM Contact</h1>
+	</div>
+</div>
+<main class="container-fluid">
+	<div id="formulario_contacto" class="row">
+		<div class="col-xs-offset1 col-xs-10 col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8">
+			<h2>Please, contact us</h2>
+			<hr/>
+			<form id="contact" action="{% url 'consultaresp' %}" method="post" class="col-xs-12">{% csrf_token %}
+			<div class="col-xs-12">
+				<label for="id_nombre">Name </label>
+				<input id="id_nombre" type="text" name="nombre"/>
+			</div>
+			<div class="col-xs-12">
+				<label for="id_mail">EMAIL</label>
+				<input id="id_mail" type="text" name="mail"/>
+			</div>
+			<div class="col-xs-12">
+				<label for="id_descripcion">Message</label>
+				<textarea id="id_descripcion" name="descripcion" ></textarea>
+			</div>
+			<button type="submit" class="col-xs-offset-3 col-xs-6 btn btn-default bt-form">Send</button>
+			</form>
+		</div>
+	</div>
+</main>
+{% endblock %}

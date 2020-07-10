@@ -1,0 +1,70 @@
+{% extends "plantilla.html" %}
+{% load static %}
+{% load  i18n %}
+{% block content %}
+    <div class="container"style="margin-left:140px; padding: 0px 10px;">
+        <div class="jumbotron">
+        <h1>PVSIM</h1>
+        </div>
+    </div>
+    <main class="container" style="margin-left: 140px;padding: 0px 10px;">
+        <div class="row" >
+            <section class="col-12" style="background-color: #555555; color: #fff; ">
+                <h2>Welcome to PVSIM</h2>
+                
+                <h2>Select Simulation </h2>
+                
+                
+            </section>
+			
+        </div>
+		<div class="container-fluid">
+			<div class="row" >
+				<div class="col-sm-4">
+					<img src="{% static "myapp/imag/forecast.png" %}" alt="Forecast" class="img-thumbnail"
+					style="width:300px;"/>			
+				</div>
+				<div class="col-sm-4">
+					<img src="{% static "myapp/imag/irradiance.png" %}" alt="Irradiance" class="img-thumbnail" 
+					style="width:300px;"/>			
+				</div>
+				<div class="col-sm-4">
+					<img src="{% static "myapp/imag/Trayectoria Solar.png" %}" alt="Sun Position" class="img-thumbnail"
+					style="width:300px;"/>			
+				</div>
+			</div>
+
+			<div class="row" >		
+				<div class="col-sm-4">
+					<h4 class="heding"> Predict Irradiance for the next 7 days for your location</h4>
+					<a href="{% url 'app_forecast' %}">Try it</a>
+				</div>
+			
+				<div class="col-sm-4">
+					<h4 class="heding"> Get the irradiance on a clear day for your location </h4>	
+					<a href="{% url 'app_irradiance_summer_winter' %}">Try it</a>
+				</div>
+				<div class="col-sm-4">
+					<h4 class="heding"> Get the Sun Path for your location during the whole year </h4>
+					<a href="{% url 'app_sun_position' %}">Try it</a>
+					
+				</div>
+			</div>
+		</div>
+    </main>
+
+
+
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+{% endblock %}
+{% block scripts %}
+
+{% endblock %}

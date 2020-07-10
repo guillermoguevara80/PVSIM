@@ -1,0 +1,92 @@
+{% extends "myapp/plantilla.html" %}
+
+{% load static %}
+{% load i18n %}
+{% block cabeceranoticia %}
+    <div class="col-12" style="position:absolute; top:0px; z-index:0;margin-left:140px;"> 
+      <!--<img id="imagen_inicio" src="/media/presentacion/cabecera_menu.jpeg" style="width:100%; " />-->
+    </div>
+{% endblock %}
+
+{% block content %}
+
+
+
+
+
+ <section class="container-fluid " style="margin-left:140px;">
+    <div class="row">
+        <div class="col-12 " style="padding:50px;  ">
+
+        </div>
+    </div>
+</section>
+ 
+
+ <!--------------------------------------------------------
+  ---------------VIDEO ---------------------------------
+  --------------------------------------------------------->
+<div id="noticias_index_p" class="container" style="margin-left:140px;">
+    <div class="row justify-content-center align-items-center   " >
+        <div class="col-12" style=" top:0px; z-index:0; "> 
+          <!--<img id="imagen_inicio" src="/media/presentacion/cabecera_menu.jpeg" style="width:100%; " />-->
+        </div>
+    </div>
+
+    <div class="row justify-content-center align-items-center mb-2 px-3" >
+        <div class="col-12 py-3" style="background-color:#fff; ">
+            <div class="row   ">
+                <div id="papers_contenido" class="col-12 py-3 ">
+                    <h4>"{{paper.titulo}}".</h4>
+                    {{paper.contenido|safe}}
+                </div>
+                <div class="col-12  py-3">
+                    <div class="row justify-content-between">
+                        <div class="col-6 col-sm-4 ">
+                              
+                        </div>
+                        <div class="col-6 col-sm-4">
+                            <a href="{% url 'contacto' %}" target="_blank">Contact</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+     </div>
+ </div>
+
+ 
+
+
+ 
+<section class="container"style="margin-left:140px;">
+    <div class="row">
+        <div class="col-12" style="padding:80px;  ">
+           <br/> 
+        </div>
+    </div>
+</section>
+
+ 
+{% endblock %}
+{% block javascript %}
+    <script src="http://cdn.jsdelivr.net/jquery.cookie/1.4.1/jquery.cookie.min.js"></script>
+    <script type="text/javascript" src="{% static 'js/juan_ajax.js' %} " ></script>
+
+
+
+
+
+    <!--------------------------------------------------------------------------------------------------------
+    --------- AUTOCOMPLETAR
+    --------------------------------------------------------------------------------------------------------->
+    <script type="text/javascript" src="{% static 'js/jquery-ui.min.js' %}"></script>
+
+    <script>
+    $( "#autocomplete" ).autocomplete({
+        source:"../../predica_pastor/"
+    });
+    </script>
+
+
+{% endblock %}

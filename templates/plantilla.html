@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block contenedor %}
+
+    
+<div class="sidenav">
+  <a href="{% url 'index' %}">Home</a>
+  <!--<a href="#about">About</a>
+  <a href="#services">Services</a>-->
+  <a href="{% url 'papers' %}">Fact Sheets</a>
+  <a href="{% url 'consultaresp' %}">Contact</a>
+</div>
+
+{% block content %}{% endblock %}
+{% endblock %}

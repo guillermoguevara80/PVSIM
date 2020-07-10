@@ -1,0 +1,90 @@
+{% extends "plantilla.html" %}
+{% load static %}
+{% load  i18n %}
+{% block content %}
+
+    <div class="container"style="margin-left:140px; padding: 0px 10px;">
+        <div class="jumbotron">
+        <h1>PV FORECAST</h1>
+        </div>
+    </div>
+
+<div class="container" style="margin-left:140px; padding: 0px 10px;">
+  <h2>Results</h2>
+  
+{% load staticfiles %}
+
+	<h3>{{simu.type}}</h3>
+
+
+	
+	<img src="../media/{{newdoc.ruta_imagen}}" alt="7 days Forecast" width="50%" height="50%" align="left"
+	style="margin: 10px ;"/> 
+	{% if simu.type == "7 Days Forecast" %}
+		<p> The ForcastApp lets you estimate GHI, DNI and DHI for the following 7 days. 
+		Global Horizontal Irradiance (GHI) is the total amount 
+		of shortwave radiation received from above by a surface horizontal to the ground.
+		Direct Normal Irradiance (DNI): amount of solar radiation received per unit area by a surface 
+		that is always held perpendicular (or normal) to the rays that come in a straight line 
+		from the direction of the sun at its current position in the sky. 
+		Diffuse Horizontal Irradiance (DHI) is the amount of radiation received per 
+		unit area by a surface (not subject to any shade or shadow) that does not arrive on a 
+		direct path from the sun, but has been scattered by molecules and particles in the 
+		atmosphere and comes equally from all directions<style="margin: 10px ;"/p>
+	{% elif simu.type == "Summer&Winter Irradiance" %}
+		<p> The IrradianceApp lets you estimate GHI and POA for a certain date and hour. 
+		Global Horizontal Irradiance (GHI) is the total amount 
+		of shortwave radiation received from above by a surface horizontal to the ground.
+		Plane Of Array (POA) is the irradiance captured by a plane or PV pannel with a certain tilt angle.
+		<style="margin: 10px ;"/p>	
+	{% elif simu.type == "Sun Path" %}
+		<p> Sun path, sometimes also called day arc, refers to the daily and seasonal arc-like path that the 
+		Sun appears to follow across the sky as the Earth rotates and orbits the Sun. 
+		The Sun's path affects the length of daytime experienced and amount of daylight received along a 
+		certain latitude during a given season.
+		The relative position of the Sun is a major factor in the heat gain of buildings and in the performance 
+		of solar energy systems.[1] Accurate location-specific knowledge of sun path and climatic conditions 
+		is essential for economic decisions about solar collector area, orientation, landscaping, summer shading, 
+		and the cost-effective use of solar trackers.
+		<style="margin: 10px ;"/p>		
+	
+	{% endif %}
+  
+   
+   
+							
+					
+   
+</div>
+
+
+{% endblock %}
+
+{% block scripts %}
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+<script>
+// Disable form submissions if there are invalid fields
+(function() {
+  'use strict';
+  window.addEventListener('load', function() {
+    // Get the forms we want to add validation styles to
+    var forms = document.getElementsByClassName('needs-validation');
+    // Loop over them and prevent submission
+    var validation = Array.prototype.filter.call(forms, function(form) {
+      form.addEventListener('submit', function(event) {
+        if (form.checkValidity() === false) {
+          event.preventDefault();
+          event.stopPropagation();
+        }
+        form.classList.add('was-validated');
+      }, false);
+    });
+  }, false);
+})();
+</script>
+{% endblock %}
+
+

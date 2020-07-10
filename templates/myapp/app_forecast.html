@@ -1,0 +1,55 @@
+{% extends "plantilla.html" %}
+{% load static %}
+{% load  i18n %}
+{% block content %}
+
+    <div class="container"style="margin-left:140px; padding: 0px 10px;">
+        <div class="jumbotron">
+        <h1>PV FORECAST</h1>
+        </div>
+    </div>
+
+<div class="container" style="margin-left:140px; padding: 0px 10px;">
+  <h2>Project Data</h2>
+  
+	<form class="col-xs-12 action="{% url 'app_forecast' %}" method="post" enctype="multipart/form-data">{% csrf_token %}
+		{{ form.Latitud.errors }} {{ form.Latitud.label_tag }} {{ form.Latitud }}
+		{{ form.Longitud.errors }} {{ form.Longitud.label_tag }} {{ form.Longitud }}
+		
+		
+		<input type="submit" value="Submit">
+	</form>
+ 
+</div>
+
+
+{% endblock %}
+
+{% block scripts %}
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+<script>
+// Disable form submissions if there are invalid fields
+(function() {
+  'use strict';
+  window.addEventListener('load', function() {
+    // Get the forms we want to add validation styles to
+    var forms = document.getElementsByClassName('needs-validation');
+    // Loop over them and prevent submission
+    var validation = Array.prototype.filter.call(forms, function(form) {
+      form.addEventListener('submit', function(event) {
+        if (form.checkValidity() === false) {
+          event.preventDefault();
+          event.stopPropagation();
+        }
+        form.classList.add('was-validated');
+      }, false);
+    });
+  }, false);
+})();
+</script>
+{% endblock %}
+
+
